@@ -1,0 +1,6 @@
+add_catch(test_gemm_v1 test.cu gemm.cuh test_utils.h)
+add_catch(bench_gemm_v1 run.cu gemm.cuh test_utils.h)
+target_link_libraries(test_gemm_v1 PRIVATE ysda_cuda::util)
+target_link_libraries(bench_gemm_v1 PRIVATE ysda_cuda::util)
+set_target_properties(test_gemm_v1 PROPERTIES CUDA_ARCHITECTURES "75;80;86")
+set_target_properties(bench_gemm_v1 PROPERTIES CUDA_ARCHITECTURES "75;80;86")

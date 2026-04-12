@@ -1,0 +1,6 @@
+add_catch(test_quaternions test.cpp quaternions.cu)
+add_catch(bench_quaternions run.cpp quaternions.cu)
+target_link_libraries(test_quaternions PRIVATE ysda_cuda::util)
+target_link_libraries(bench_quaternions PRIVATE ysda_cuda::util)
+set_target_properties(test_quaternions PROPERTIES CUDA_ARCHITECTURES "75;86")
+set_target_properties(bench_quaternions PROPERTIES CUDA_ARCHITECTURES "75;86")

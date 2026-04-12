@@ -1,1 +1,3 @@
-# CUDA-Programming
+# Курс ШАД по CUDA
+
+Инструкция по настройке окружения описана в [SETUP.md](docs/SETUP.md).

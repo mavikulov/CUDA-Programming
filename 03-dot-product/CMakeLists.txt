@@ -1,0 +1,6 @@
+add_catch(test_dot_product test.cu dot_product.cuh)
+add_catch(bench_dot_product run.cu dot_product.cuh)
+target_link_libraries(test_dot_product PRIVATE ysda_cuda::util)
+target_link_libraries(bench_dot_product PRIVATE ysda_cuda::util)
+set_target_properties(test_dot_product PROPERTIES CUDA_ARCHITECTURES "75;80;86")
+set_target_properties(bench_dot_product PROPERTIES CUDA_ARCHITECTURES "75;80;86")

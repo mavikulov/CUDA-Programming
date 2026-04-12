@@ -1,0 +1,6 @@
+add_catch(test_quantization test.cpp quantization.cu)
+add_catch(bench_quantization run.cpp  quantization.cu)
+target_link_libraries(test_quantization PRIVATE ysda_cuda::util)
+target_link_libraries(bench_quantization PRIVATE ysda_cuda::util)
+set_target_properties(test_quantization PROPERTIES CUDA_ARCHITECTURES "50;75;86")
+set_target_properties(bench_quantization PROPERTIES CUDA_ARCHITECTURES "50;75;86")

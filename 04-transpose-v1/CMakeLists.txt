@@ -1,0 +1,6 @@
+add_catch(test_transpose_v1 test.cu transpose.cuh)
+add_catch(bench_transpose_v1 run.cu transpose.cuh)
+target_link_libraries(test_transpose_v1 PRIVATE ysda_cuda::util)
+target_link_libraries(bench_transpose_v1 PRIVATE ysda_cuda::util)
+set_target_properties(test_transpose_v1 PROPERTIES CUDA_ARCHITECTURES "75;80;86")
+set_target_properties(bench_transpose_v1 PROPERTIES CUDA_ARCHITECTURES "75;80;86")
