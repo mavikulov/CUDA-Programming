@@ -1,0 +1,6 @@
+add_catch(test_softmax_long test.cpp softmax.cu)
+add_catch(bench_softmax_long run.cpp softmax.cu)
+target_link_libraries(test_softmax_long PRIVATE ysda_cuda::util)
+target_link_libraries(bench_softmax_long PRIVATE ysda_cuda::util)
+set_target_properties(test_softmax_long PROPERTIES CUDA_ARCHITECTURES "75;86")
+set_target_properties(bench_softmax_long PROPERTIES CUDA_ARCHITECTURES "75;86")

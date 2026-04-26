@@ -1,0 +1,25 @@
+variables:
+  GIT_DEPTH: 10
+  GIT_STRATEGY: clone
+  REGISTRY: gitlab.manytask.org:5050/cuda/public-2026-spring
+
+grade:
+  image: $REGISTRY/testenv-image:latest
+  tags:
+    - cuda
+  rules:
+    - if: $CI_PROJECT_NAME =~ /^public-20\d\d-(fall|spring)/
+      when: never
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /contributing/ || $CI_COMMIT_BRANCH =~ /contributing/
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      when: on_success
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: manual
+    - when: on_success
+  script:
+    - . /opt/checker/venv/bin/activate
+    - python3 -m checker grade . /opt/shad
+  timeout: 10 minutes
