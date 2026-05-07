@@ -1,0 +1,6 @@
+add_catch(test_prefix_sum test.cu prefix_sum.cu prefix_sum.cuh)
+add_catch(bench_prefix_sum run.cu prefix_sum.cu prefix_sum.cuh)
+target_link_libraries(test_prefix_sum PRIVATE ysda_cuda::util)
+target_link_libraries(bench_prefix_sum PRIVATE ysda_cuda::util)
+set_target_properties(test_prefix_sum PROPERTIES CUDA_ARCHITECTURES "75;86")
+set_target_properties(bench_prefix_sum PROPERTIES CUDA_ARCHITECTURES "75;86")
